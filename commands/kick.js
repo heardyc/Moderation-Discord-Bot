@@ -11,7 +11,7 @@ module.exports = {
         var member = message.mentions.members.first();
         if(!args[0] || !member) return message.channel.send("Please mention a person to be kicked!")
 
-        if (!member.hasPermission([KICK_MEMBERS])) {
+        if (!member.hasPermission(['KICK_MEMBERS', 'ADMINISTRATOR'])) {
             member.send(`:wave: You have been kicked from ${message.guild} by ${message.author.username}`)
             member.kick().then((member) => {
                 message.channel.send(`:wave: ${member.displayName} has been successfully kicked from the server!`)
@@ -20,8 +20,7 @@ module.exports = {
             })
         }
         else {
-            message.channel.send('Nice try, You can\'t ban this user!')
+            message.channel.send('**Nice try** :wink:: You can\'t kick this user!')
         }
-
     }
 }
